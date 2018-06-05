@@ -16,40 +16,23 @@
 	canvas.width = 800;
 	canvas.height = 600;
 
-	context.beginPath();
-	context.moveTo(100,50);
-	context.lineTo(500,50);
-	context.lineTo(500,400);
-	context.lineTo(100,400);
-	context.lineTo(100,50); //最后一笔可以不画
-	context.closePath();
+	drawRect(context,50,50,220,110,"red",5,"black");
+	drawRect(context,150,150,220,110,"purple",5,"black");
+	drawRect(context,250,250,220,110,"blue",5,"black");
 
-	context.fillStyle = "purple"; //选择油漆桶的颜色
-	context.lineWidth = 5;
-	context.strokeStyle = "yellow";
+	function drawRect(cxt, x, y, width, height, fillColor, borderWidth, borderColor){
+        cxt.beginPath();
+        cxt.rect(x, y, width, height);
+        //cxt.closePath();    可以不用closePath()
 
-	context.fill(); //填充
-	context.stroke(); //描边
-	/*
-	因为Canvas是基于状态的绘制，
-	只有调用了stroke()和fill()才确定绘制。
-	所以我们要把这两行代码放在最后，
-	其余的状态设置的代码放在它们之前，
-	将状态设置与确定绘制的代码分隔开。增强代码的可读性。
-	*/
-	
+        cxt.lineWidth = borderWidth;
+        cxt.strokeStyle = borderColor;
+        cxt.fillStyle = fillColor;
 
-	/*
-	context.beginPath();
-	context.moveTo(80,0);
-	context.lineTo(400,450);
-	context.lineTo(80,450);
-	context.lineTo(450,0);
-	context.lineWidth = 5;
-	context.strokeStyle = "red";
-	context.stroke();
-	*/
-	
+        cxt.fill();
+        cxt.stroke();
+}
+
 }
 
 </script>
