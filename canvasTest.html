@@ -10,21 +10,36 @@
 	</canvas>
 
 <script>
-window.onload = function(){
+	window.onload = function(){
 	var canvas = document.getElementById("canvas");
 	var context = canvas.getContext("2d");
 	canvas.width = 800;
 	canvas.height = 600;
 
 	context.beginPath();
-	context.moveTo(180,0);
-	context.lineTo(500,550);
-	context.lineTo(180,550);
-	context.lineTo(550,0);
-	context.lineWidth = 5;
-	context.strokeStyle = "green";
-	context.stroke();
+	context.moveTo(100,50);
+	context.lineTo(500,50);
+	context.lineTo(500,400);
+	context.lineTo(100,400);
+	context.lineTo(100,50); //最后一笔可以不画
+	context.closePath();
 
+	context.fillStyle = "purple"; //选择油漆桶的颜色
+	context.lineWidth = 5;
+	context.strokeStyle = "yellow";
+
+	context.fill(); //填充
+	context.stroke(); //描边
+	/*
+	因为Canvas是基于状态的绘制，
+	只有调用了stroke()和fill()才确定绘制。
+	所以我们要把这两行代码放在最后，
+	其余的状态设置的代码放在它们之前，
+	将状态设置与确定绘制的代码分隔开。增强代码的可读性。
+	*/
+	
+
+	/*
 	context.beginPath();
 	context.moveTo(80,0);
 	context.lineTo(400,450);
@@ -33,6 +48,7 @@ window.onload = function(){
 	context.lineWidth = 5;
 	context.strokeStyle = "red";
 	context.stroke();
+	*/
 }
 
 </script>
